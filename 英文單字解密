@@ -1,0 +1,43 @@
+#include<iostream>  
+using namespace std;  
+  
+int main()  
+{  
+ int x;  
+ char f1, f2, f3, f4;  
+ cin >> x >> f1 >> f2 >> f3 >> f4;  
+ char f11 = f1 - x, f22 = f2 - x, f33 = f3 - x, f44 = f4 - x;  
+ if (('a' <= f1) && (f1 <= 'z'))  
+ {  
+  if (f11 < 'a') { f11 += 26; }  
+ }  
+ else if (('A' <= f1) && (f1 <= 'Z'))  
+ {  
+  if (f11 < 'A') { f11 += 26; }  
+ }  
+ if (('a' <= f2) && (f2 <= 'z'))  
+ {  
+  if (f22 < 'a') { f22 += 26; }  
+ }  
+ else if (('A' <= f2) && (f2 <= 'Z'))  
+ {  
+  if (f22 < 'A') { f22 += 26; }  
+ }  
+ if (('a' <= f3) && (f3 <= 'z'))  
+ {  
+  if (f33 < 'a') { f33 += 26; }  
+ }  
+ else if (('A' <= f3) && (f3 <= 'Z'))  
+ {  
+  if (f33 < 'A') { f33 += 26; }  
+ }  
+ if (('a' <= f4) && (f4 <= 'z'))  
+ {  
+  if (f44 < 'a') { f44 += 26; }  
+ }  
+ else if (('A' <= f4) && (f4 <= 'Z'))  
+ {  
+  if (f44 < 'A') { f44 += 26; }  
+ }  
+ cout << f11 << f22 << f33 << f44 << endl;  
+}  
