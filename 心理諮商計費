@@ -1,0 +1,28 @@
+#include<iostream>    
+using namespace std;  
+  
+int main()  
+{  
+    int N, M, hr, min, sec, hr1, min1, sec1;  
+    cin >> N;  
+  
+    for (int i = 1; i <= N; i++) {  
+  
+        cin >> hr >> min >> sec >> hr1 >> min1 >> sec1 >> M;    
+        int h = hr1 - hr;  
+        int m = min1 - min;  
+        int s = sec1 - sec;  
+  
+        if (s < 0) {  
+            s = s + 60;  
+            m = m + 1;  
+        }  
+  
+        if (( h * 60 + m ) % 30 >= 20) {  
+            cout << (( h * 60 + m ) / 30 + 1 ) * M << endl;  
+        }  
+        else {  
+            cout << (( h * 60 + m ) / 30 ) * M << endl;  
+        }  
+    }  
+}  
