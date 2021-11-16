@@ -1,0 +1,37 @@
+#include<iostream>   
+using namespace std;  
+  
+int main() {  
+  
+    int k;  
+    char b1, b2, b3, b4;  
+    cin >> k >> b1 >> b2 >> b3 >> b4;  
+    char b11 = b1 + k, b22 = b2 + k, b33 = b3 + k, b44 = b4 + k;  
+  
+  
+    if (('a' <= b1) && (b1 <= 'z')) {  
+        if (b11 > 'z') { b11 -= 26; }  
+    }  
+    else if (('A' <= b1) && (b1 <= 'Z')) {  
+        if (b11 > 'Z') { b11 -= 26; }  
+    }  
+    if (('a' <= b2) && (b2 <= 'z')) {  
+        if (b22 > 'z') { b22 -= 26; }  
+    }  
+    else if (('A' <= b2) && (b2 <= 'Z')) {  
+        if (b22 > 'Z') { b22 -= 26; }  
+    }  
+    if (('a' <= b3) && (b3 <= 'z')) {  
+        if (b33 > 'z') { b33 -= 26; }  
+    }  
+    else if (('A' <= b3) && ( b3 <= 'Z')) {  
+        if (b33 > 'Z') { b33 -= 26; }  
+    }  
+    if (('a' <= b4) && (b4 <= 'z')) {  
+        if (b44 > 'z') { b44 -= 26; }  
+    }  
+    else if (('A' <= b4) && (b4 <= 'Z')) {  
+        if (b44 > 'Z') { b44 -= 26; }  
+    }  
+    cout << b11 << b22 << b33 << b44 << endl;  
+}  
