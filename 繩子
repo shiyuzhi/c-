@@ -1,0 +1,21 @@
+#include<iostream>  
+using namespace std;  
+  
+int main()  
+{  
+    int N;  
+    float n, m;  
+    cin >> N;  
+    if (N < 1 || N > 100) return 0;  
+  
+    for (int i = 1; i <= N; i++) {  
+        int t = 0;  
+        cin >> n >> m;  
+        while (  n >= m )  
+        {  
+            n = n / 2;  
+            t = t + 1;  
+        }  
+        cout << t << endl;  
+    }  
+}  
