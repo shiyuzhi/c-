@@ -25,7 +25,7 @@ int main()
         int r = a % b;  
         if (r >= 0)  
         cout << a << "/" << b << "=" << a / b << "..." << r << endl;  
-        break;  
+        break;   
   
     }  
   
