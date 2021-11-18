@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+
+int gcd(int x, int y)
+{
+	if (x != 0 && y != 0)
+		return gcd((x >= y) ? x % y : x, (x < y) ? y % x : y);
+	else
+		return (x != 0) ? x : y;
+}
+
+	
+int main()
+{
+	int n1, n2, n3;
+	int a, b, c;
+	while (cin >> n1 >> n2 >> n3)
+	{
+		a = gcd(n1, n2);
+		b = gcd(a, n3);
+		c = (n1 / b) + (n2 / b) + (n3 / b);
+		if (n1 > 100 || n1 < 1 || n2 > 100 || n2 < 1 || n3 > 100 || n3 < 1)
+		{
+			cout << "超出範圍值\n";
+			cout << "請重新輸入\n";
+		}
+		else
+		{
+			if (n1 + n2 > n3 && n1 + n3 > n2)
+			{
+				cout << c << " " << b << endl;
+			}
+			else
+			{
+				cout << "Error" << endl;
+			}
+
+		}
+	}
+}
