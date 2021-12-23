@@ -1,0 +1,39 @@
+#include<iostream>
+#include<iomanip>
+using namespace std;
+
+struct Student{
+	char name[100];
+	
+	int  score1;
+	int  score2;
+	int  score3;
+	int  sum;
+};
+
+int main()
+{
+	Student temp;
+	Student array[10];
+	for(int i=0;i< 10 ;i++)
+	{
+		cin >>array[i].name>>array[i].score1>>array[i].score2>>array[i].score3;
+		array[i].sum=array[i].score1+array[i].score2+array[i].score3;
+		if( array[i].score1 < 0 || array[i].score1 > 100 || array[i].score2 < 0 || array[i].score2 > 100 
+		    || array[i].score3 < 0 || array[i].score3 > 100) return 0;
+	}
+	
+	for(int j=0;j< 10;j++)
+		for(int i=0;i<10-j;i++)
+			if(array[i].sum<array[i+1].sum)
+			{
+				temp=array[i];
+				array[i]=array[i+1];
+				array[i+1]=temp;
+			}
+	for(int i=0;i<9 ;i++)
+		cout<<array[i].name<<" "<<array[i].score1<<" "<<
+		array[i].score2<<" "<<array[i].score3 <<" "<<array[i].sum<<endl;
+	return 0;
+}
+
