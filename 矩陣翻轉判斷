@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num[100][100];
+    int n;
+    int a, b;
+    cin >> n;
+    if (n > 10) return 0;
+
+    for (int x = 0; x < n; x++) {
+        cin >> a >> b;
+        if (a < 0 || a > 10 || b < 0 || b > 10) return 0;
+        for (int i = 0; i < a; i++) {
+            for (int j = 0; j < b; j++) {
+                cin >> num[i][j];
+            }
+        }
+
+        int o = 0;
+        for (int i = a - 1; i > 0; i--) {
+            int p = 0;
+            for (int j = b - 1; j > 0; j--) {
+                if (num[o][p] != num[i][j]) {
+                    i = 0;
+                    cout << "不可" << endl;
+                    break;
+                }
+                else if ((num[o][p] == num[i][j]) && i == 1 && j == 1) {
+                    cout << "可" << endl;
+                }
+                p++;
+            }
+            o++;
+        }
+    }
+    system("pause");
+}
