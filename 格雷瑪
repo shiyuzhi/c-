@@ -1,0 +1,46 @@
+#include <iostream>  
+#include <vector>  
+#include <string>  
+   
+using namespace std;  
+  
+vector<string> generateGraycode(int n)  
+{  
+    vector<string> nGraycode;  
+    if (n == 1)  
+    {  
+        nGraycode.push_back("0");  
+        nGraycode.push_back("1");  
+    }  
+    else  
+    {  
+        vector<string> mid_ans = generateGraycode(n - 1);  
+        for (vector<string>::iterator iter = mid_ans.begin(); iter != mid_ans.end(); ++iter)  
+        {  
+            string temp = *iter;  
+            temp.insert(0, "0");  
+            nGraycode.push_back(temp);  
+        }  
+        for (int i = mid_ans.size() - 1; i >= 0; --i)  
+        {  
+            string temp = mid_ans[i];  
+            temp.insert(0, "1");  
+            nGraycode.push_back(temp);  
+        }  
+    }  
+    return nGraycode;  
+}  
+   
+int main()  
+{  
+    vector<string>nGraycode;  
+    int n;  
+    while(cin>>n){  
+    if(n<1||n>15)return 0;  
+    nGraycode = generateGraycode(n);  
+    for(int i = 0; i < nGraycode.size(); i++)  
+        cout << nGraycode.at(i) << endl;  
+    }  
+    return 0;  
+}  
+ 
