@@ -1,0 +1,24 @@
+#include <vector>   
+using namespace std;  
+  
+vector< vector<long long> > dp;  
+long long f(int m,int n){  
+    if(dp[m][n]>0)  
+       return dp[m][n];  
+    if(m==0 || n==0)  
+       return 1;  
+    return dp[m][n]=f(m,n-1)+f(m-1,n);  
+}  
+  
+int main(){  
+    int m,n;  
+    vector<long long> row;  
+    while(cin>>m>>n){  
+        row.clear();  
+        dp.clear();  
+        row.assign(n+1,0);  
+        dp.assign(m+1,row);  
+        cout << f(m,n)<<endl;  
+    }  
+    return 0;  
+}  
