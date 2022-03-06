@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+#include <algorithm> 
+#include <vector>
+using namespace std;
+
+class Member
+{
+        friend bool cmp(Member,Member);
+    public:
+        void setData(string,string,string,int,int,string);
+        int getage(){return age;}
+        void print()
+        {
+            cout<<id<<" "<<name<<" "<<tel<<" "<<month<<" "<<age<<" "<<gender<<endl;
+        }
+         bool isMale()
+        {
+            return (gender == "男" );
+        } 
+    private:
+        string id;
+        string name;
+        string tel;
+        int month;
+        int age;
+        string gender;
+};
+
+void Member::setData(string id,string n,string tno,int m,int ag,string gn)
+{
+    this->id = id;
+    this->name = n;
+    tel = tno;
+    month = m;
+    age = ag;
+    gender = gn;
+}
+
+bool cmp(Member m1,Member m2)
+{
+    return (m1.age > m2.age);
+}
+
+int main()
+{
+    int m,n,male=0,famale=0;
+    vector <Member> members;
+    string id, name, tel, gender;
+    int month, age;
+    cin >>m>>n;
+    
+    for(int i=0;i<n;i++)
+    {
+        cin>>id>>name>>tel>>month>>age>>gender;
+        if(month!=m)
+          continue;
+        Member tmp;
+        tmp.setData(id, name, tel, month, age, gender);
+        members.push_back(tmp);
+    }
+    sort(members.begin(),members.end(),cmp);
+    //輸出.....
+    for(int i=0;i<members.size();i++)
+    {
+        if(members[i].isMale())
+           male++;
+        else
+           famale++;
+        members[i].print();
+    }
+    cout << "男 " << male << endl;
+    cout << "女 " << famale << endl;
+    return 0;
+}
