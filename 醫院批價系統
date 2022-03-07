@@ -1,0 +1,80 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+class h {
+    public:
+        void init(string, int, int, int, int);
+        string getName();
+        int getTotal();      
+         
+    private:
+        string name;
+        int level;
+        int day;
+        int m1;
+        int m2;
+        int total;
+};
+
+void h::init(string name, int level, int day, int m1, int m2) {
+    this->name = name;
+    this->level = level;
+    this->day = day;
+    this->m1 = m1;
+    this->m2 = m2;
+    this->total = this->level * this->day + this-> m1 + this->m2;
+}
+
+string h::getName() { return this->name; }
+int h::getTotal() { return this->total; }
+
+bool isInteger(string a) {
+    for (int i=0; i < a.size(); i++) {
+        if (a.at(0) < '0' || a.at(0) > '9') return false;
+    }
+    
+    return true;
+}
+
+int main() {
+    int A, B, C;
+    cin >> A >> B >> C;
+        
+    string name, level, day, m1, m2;
+    
+    vector<h> patient;
+    
+    while (cin >> name >> level >> day >> m1 >> m2) {
+        if (level.at(0) < 'A' || level.at(0) > 'C') continue;
+        
+        if (isInteger(day) && isInteger(m1) && isInteger(m2)) {
+            h tmp;
+            
+            if (level == "A") tmp.init(name, A, stoi(day), stoi(m1), stoi(m2) /*string to integer*/);
+            else if (level == "B") tmp.init(name, B, stoi(day), stoi(m1), stoi(m2) /*string to integer*/);
+            else if (level == "C") tmp.init(name, C, stoi(day), stoi(m1), stoi(m2) /*string to integer*/);
+            
+            patient.push_back(tmp);
+        }   
+    }
+    
+    for (int i=0; i < patient.size(); i++) {
+        for (int j=i+1; j < patient.size(); j++) {
+            if (patient[i].getTotal() < patient[j].getTotal()) {
+                swap(patient[i], patient[j]);   
+            } else if (patient[i].getTotal() == patient[j].getTotal()) {
+                if (patient[i].getName() < patient[j].getName()) {
+                    swap(patient[i], patient[j]);
+                }
+            }
+        }
+    }
+    
+    for (int i=0; i < patient.size(); i++) {
+        cout << patient[i].getName() << " " << patient[i].getTotal() << endl;
+    }
+
+    return 0;
+}
