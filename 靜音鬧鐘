@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+class Phone{                        //物件類別 phone
+        private:
+            int start;                 //開始
+            int end;                   //結束
+        
+        public:
+            Phone(int a,int b,int c,int d){
+            start=a*60+b;           //改成分鐘    
+            end=c*60+d;
+        }
+        
+        bool istime(int a,int b){
+        int n=a*60+b;                  //改成分鐘      
+        return (n>=start && n<=end); //判斷時間 
+      }
+};
+
+int main(){
+
+    int a,b,c,d,x,y;        // 輸入開始結束時間            
+    cin>>a>>b>>c>>d;
+    cin>>x>>y;
+    Phone p(a,b,c,d);        
+
+    if(p.istime(x,y))cout<<"No"<<endl; //輸出 是否能收到訊息
+    else cout<<"Yes"<<endl;
+
+    return 0;
+}
