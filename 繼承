@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+class Point
+{
+public:
+    Point(int ix = 0, int iy = 0)
+    {
+        x = ix; y = iy;
+    }
+protected:
+    int x, y;
+};
+
+class Circle:public Point
+{
+public:
+    Circle(int ix = 0, int iy = 0, int ir = 0) :Point(ix, iy)
+    {
+        radius = ir;
+    }
+    double perimeter()
+    {
+        return radius * 2 * 3.14;
+    }
+    double Area()
+    {
+        return radius * radius * 3.14;
+    }
+protected:
+    int radius;
+};
+
+class Cylinder:public Circle
+{
+    friend ostream& operator<<(ostream&, const Cylinder&);
+public:
+    Cylinder(int  ix = 0, int iy = 0, int ir = 0,int h = 0):Circle(ix, iy, ir)
+    {
+       height = ir;
+    }
+    double area()
+    {
+        return (Area() * 2 + perimeter() * height);
+    }
+    double volume()
+    {
+        return Area()* height;
+    }
+
+    void print()
+    {
+        cout << (int)area() << " " << (int)volume() << endl;
+    }
+private:
+    int height;
+};
+
+
+int main()
+{
+    int x, y, r, h;
+    while (cin >> x >> y >> r >> h)
+    {
+        Cylinder a(x, y, r, h);
+        a.print();
+    }
+}
